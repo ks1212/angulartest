@@ -1,0 +1,44 @@
+<div class="margin20 textCenter fs20">Phone Directory</div>
+<div class="textCenter">
+
+  <div class="textCenter inputContent">
+    <div class="txtLeft marginTB40 fb">
+      <div class="txtLeft">
+        <form [formGroup]="contactForm">
+          <input type="text" id="name" value="" placeholder="Contact Name" formControlName="name" />
+          <input type="tel" id="mobile" value="" placeholder="Mobile Number" formControlName="mobile" />
+          <input type="email" id="email" value="" placeholder="Email" formControlName="email">
+          <input type="submit" class="btn" id="submit" value="Add Contact"
+            (click)="addContract(contactForm, contactForm.invalid)" />
+
+          <div class="content" id="error" *ngIf="isFormInvalid">
+            Invalid Input !
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="marginT40 padL10 tab cursorPtr" id="contactsSummary">Contacts Summary</div>
+  <div id="contactSummary" class="contactSummary">
+    <table class="sortable">
+      <thead>
+        <tr class="item">
+          <th id="nameColumn">Name</th>
+          <th>Mobile</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let contact of contactsList">
+          <tr>
+            <td>{{contact.name}}</td>
+            <td>{{contact.mobile}}</td>
+            <td>{{contact.email}}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <div id="noResult" class="noResult dn">No Results Found</div>
+  </div>
+</div>
